@@ -1,0 +1,44 @@
+.row{
+    margin-bottom: 20px;
+}
+
+.user_list{
+    position: absolute;
+    cursor: pointer;
+    z-index: 100;
+    width: 92%;
+    background-color: white;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    padding: 2px 18px;
+    max-height: 200px;
+    overflow: scroll;
+}
+
+.card.hovercard .useravatar {
+    position: absolute;
+    top: 7px;
+    left: 0;
+    right: 0;
+}
+.card.hovercard .useravatar img {
+    width: 30px;
+    height: 30px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.record{
+    height: 50px;
+    border-bottom: 1px solid lightgray;
+    cursor: pointer;
+}
+
+.other_info li{
+    float: left;
+    font-size: 10px;
+    padding-right: 25px;
+}

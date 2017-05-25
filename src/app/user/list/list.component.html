@@ -1,0 +1,13 @@
+
+<div class="row" *ngIf="enableSearch">
+    <app-search (filterdUsers)="searchResult($event)"></app-search>
+</div>
+
+<div class="row detail_section">
+
+      <div class="section" *ngFor="let user of users">
+        <user-card [user]="user"></user-card>
+      </div>
+
+
+</div>
