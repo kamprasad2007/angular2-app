@@ -52,7 +52,9 @@ const User = sequelize.define('user', {
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-
+app.get('/', function(req, res) {
+  res.sendFile(path.join(__dirname + '/dist/index.html'));
+});
 
 app.post('/api/user/create', function (req, res) {
     User.create(req.body.user).then((user)=>{
@@ -116,9 +118,7 @@ app.delete('/api/user/:id',function(req,res){
 });
 
 
-app.get('/*', function(req, res) {
-  res.sendFile(path.join(__dirname + '/dist/index.html'));
-});
+
 
 sequelize.sync({force: true}).then(()=>{
     User.bulkCreate([{
