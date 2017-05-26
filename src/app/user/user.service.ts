@@ -10,19 +10,21 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class UserService {
 
+   private baseUrl: string = 'https://user-management-ui.herokuapp.com'
+
   constructor(private http: Http) { }
 
   searchUsers(searchText: string): Observable<User[]>{
     if(searchText=='')
       searchText = '*';
 
-    return this.http.get("http://user-management-ui.herokuapp.com/api/user/search/"+ searchText)
+    return this.http.get(this.baseUrl + "/api/user/search/"+ searchText)
             .map(this.extractData)
             .catch(this.handleError);
   }
 
   getAllUsers(): Observable<User[]>{
-    return this.http.get("http://user-management-ui.herokuapp.com/api/user/all")
+    return this.http.get(this.baseUrl + "/api/user/all")
             .map(this.extractData)
             .catch(this.handleError);
   }
@@ -31,7 +33,7 @@ export class UserService {
     let header =new Headers({ 'Content-Type': 'text/plain' });
     let options = new RequestOptions(header);
 
-    return this.http.get("http://user-management-ui.herokuapp.com/api/user/" + userId,options)
+    return this.http.get(this.baseUrl + "/api/user/" + userId,options)
             .map(this.extractData)
             .catch(this.handleError);
   }
@@ -40,13 +42,13 @@ export class UserService {
     let header =new Headers({ 'Content-Type': 'text/plain' });
     let options = new RequestOptions(header);
     
-    return this.http.post("http://user-management-ui.herokuapp.com/api/user/create",{ user }, options)
+    return this.http.post( this.baseUrl + "/api/user/create",{ user }, options)
             .map(this.extractData)
             .catch(this.handleError);
   }
 
   deleteUser(userId: number): Observable<boolean>{
-     return this.http.delete("http://user-management-ui.herokuapp.com/api/user/" + userId)
+     return this.http.delete(this.baseUrl + "/api/user/" + userId)
             .map(this.extractData)
             .catch(this.handleError);
   }
@@ -54,7 +56,7 @@ export class UserService {
   updateUser(user: User): Observable<boolean>{
      let header =new Headers({ 'Content-Type': 'application/json' });
      let options = new RequestOptions(header);
-     return this.http.post("http://user-management-ui.herokuapp.com/api/user/update",{ user },options)
+     return this.http.post(this.baseUrl + "/api/user/update",{ user },options)
             .map(this.extractData)
             .catch(this.handleError);
   }
