@@ -1,8 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule,  Routes } from '@angular/router';
+import {CommonModule} from "@angular/common";
+
 import { AppComponent } from './app.component';
 import { ToolbarComponent } from './core/toolbar/toolbar.component';
 import { CreateComponent } from './user/create/create.component';
@@ -10,6 +12,7 @@ import { ListComponent } from './user/list/list.component';
 import { SearchComponent } from './core/search/search.component';
 import { UserService } from './user/user.service';
 import { CardComponent } from './user/card/card.component';
+
 
 const appRoute: Routes =[
   { path : '' , redirectTo :'/home', pathMatch: 'full'},
@@ -31,6 +34,7 @@ const appRoute: Routes =[
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     RouterModule.forRoot(appRoute)
   ],

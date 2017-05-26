@@ -17,7 +17,6 @@ export class ListComponent implements OnInit {
   constructor(private userService: UserService, private route:ActivatedRoute) { }
 
   ngOnInit() {
-    //access route data
     this.route.data.subscribe(
       data => {
         this.enableSearch = data.search;

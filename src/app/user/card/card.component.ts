@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter, HostListener} from '@angular/core';
+
 import { Router } from '@angular/router';
 import { User } from '../../model/user.model';
 
@@ -35,7 +36,6 @@ export class CardComponent implements OnInit {
       this.profilePictureId = this.user.id;
     }
   }
-
 
   onClickEdit(id: number){
     this.router.navigate(['./edit/'+ id]);
