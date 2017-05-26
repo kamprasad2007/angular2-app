@@ -1,10 +1,12 @@
 import { Component, OnInit, Output, EventEmitter, ViewChild } from '@angular/core';
-import { UserService } from '../../user/user.service';
-import { User } from '../../model/user.model';
 import { Router } from '@angular/router';
 import { FormControl } from '@angular/forms';
 
 import  'rxjs';
+
+import { UserService } from '../../user/user.service';
+import { User } from '../../model/user.model';
+
 
 @Component({
   selector: 'app-search',
@@ -12,7 +14,9 @@ import  'rxjs';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
+
   @Output() filterdUsers = new EventEmitter<User[]>();
+  
   users: User[]
   openPanel: boolean = false
   mouseEnter: boolean = false

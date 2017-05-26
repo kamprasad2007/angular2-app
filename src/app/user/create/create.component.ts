@@ -1,10 +1,11 @@
 import { Component, OnInit, trigger} from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { UserService } from '../user.service';
-import { User } from '../../model/user.model';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { Observable }       from 'rxjs/Observable';
+import { Observable } from 'rxjs/Observable';
+
+import { UserService } from '../user.service';
+import { User } from '../../model/user.model';
 
 @Component({
   selector: 'app-create',
@@ -15,6 +16,7 @@ export class CreateComponent implements OnInit {
 
   userId: number
   user: User = new User('','','')
+  submitted: boolean = false
 
   constructor(private userService : UserService,
               private router: Router,
@@ -34,6 +36,9 @@ export class CreateComponent implements OnInit {
   }
 
   onSubmit(form: NgForm){
+
+    this.submitted = true;
+
     if(!form.valid)
       return;
 

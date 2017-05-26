@@ -6,7 +6,7 @@
           <input type="text" class="form-control" id="firstName" placeholder="First Name"  name="firstName" 
           [(ngModel)]="user.firstName" required #fName="ngModel">
 
-          <div *ngIf="fName.errors && (fName.dirty || fName.touched)" class="alert alert-danger">
+          <div *ngIf="fName.errors && (fName.dirty || fName.touched || submitted)" class="alert alert-danger">
               <div [hidden]="!fName.errors.required">
                 First Name is required
               </div>
@@ -18,7 +18,7 @@
           <input type="text" class="form-control" id="lastName" placeholder="Last Name"  name="lastName" 
           [(ngModel)]="user.lastName" required #lName="ngModel">
 
-          <div *ngIf="lName.errors && (lName.dirty || lName.touched)" class="alert alert-danger">
+          <div *ngIf="lName.errors && (lName.dirty || lName.touched || submitted)" class="alert alert-danger">
               <div [hidden]="!lName.errors.required">
                 Last Name is required
               </div>
@@ -30,7 +30,7 @@
           <input type="email" class="form-control" id="email" placeholder="Email" pattern="[^ @]*@[^ @]*" name="email" 
           [(ngModel)]="user.email" required #email="ngModel">
             
-            <div *ngIf="email.errors && (email.dirty || email.touched)" class="alert alert-danger">
+            <div *ngIf="email.errors && (email.dirty || email.touched || submitted)" class="alert alert-danger">
               <div [hidden]="!email.errors.required">
                 Email is required
               </div>

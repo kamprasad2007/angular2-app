@@ -11,14 +11,19 @@ import { User } from '../../model/user.model';
   styleUrls: ['./card.component.css']
 })
 export class CardComponent implements OnInit {
+
   @Input() user: User;
   @Output() onDeleteUser = new EventEmitter<number>();
+  
+
   @HostListener('mouseenter') onMouseEnter(){
     this.showActionButtons = true;
   }
   @HostListener('mouseleave') onMouseLeave(){
     this.showActionButtons = false;
   }
+
+
   showDialog: boolean = false
   message: string = "This record is not allowed to delete. !"
   allowToDelete: boolean = false
