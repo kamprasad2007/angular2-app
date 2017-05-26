@@ -1,5 +1,5 @@
- <div class="container">
-            <div class="card hovercard">
+ <div class="container" [@cardState]="state">
+            <div class="card hovercard" >
                 <div class="message-box" *ngIf="showDialog">
                     
                     {{message}}

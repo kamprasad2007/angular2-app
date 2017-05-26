@@ -13,6 +13,7 @@ import { SearchComponent } from './core/search/search.component';
 import { UserService } from './user/user.service';
 import { CardComponent } from './user/card/card.component';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const appRoute: Routes =[
   { path : '' , redirectTo :'/home', pathMatch: 'full'},
@@ -33,6 +34,7 @@ const appRoute: Routes =[
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
     HttpModule,

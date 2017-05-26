@@ -7,7 +7,7 @@
             </span>
           </div>
 
-          <div *ngIf="openPanel" class="user_list" (mouseenter)="onMouseEnter()" (mouseleave)="onMouseLeave()">
+          <div *ngIf="openPanel" class="user_list" (mouseenter)="onMouseEnter()" (mouseleave)="onMouseLeave()" [@panelState]="state">
 
             <div class="record" *ngFor="let user of users" (click)="onClick(user.id)">
               <div class="row">

@@ -12,4 +12,7 @@ export class ToolbarComponent implements OnInit {
   ngOnInit() {
   }
 
+  openNewTab(){
+    window.open('https://github.com/kamprasad2007/angular2-app');
+  }
 }

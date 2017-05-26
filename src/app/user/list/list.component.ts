@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+
 import { UserService } from '../user.service';
 import { User } from '../../model/user.model';
-import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'user-list',
@@ -12,9 +13,10 @@ export class ListComponent implements OnInit {
 
   users: User[]
   enableSearch: boolean = false
+  state: string
 
-
-  constructor(private userService: UserService, private route:ActivatedRoute) { }
+  constructor(private userService: UserService, private route:ActivatedRoute) { 
+  }
 
   ngOnInit() {
     this.route.data.subscribe(

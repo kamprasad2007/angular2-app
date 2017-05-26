@@ -12,6 +12,7 @@ import { User } from '../model/user.model';
 export class UserService {
 
    private baseUrl: string = 'https://user-management-ui.herokuapp.com'
+  //  private baseUrl: string = 'http://localhost:3000'
 
   constructor(private http: Http) { }
 

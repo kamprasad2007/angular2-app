@@ -1,6 +1,13 @@
 import { Component, OnInit, Output, EventEmitter, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormControl } from '@angular/forms';
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition
+} from '@angular/animations';
 
 import  'rxjs';
 
@@ -11,7 +18,18 @@ import { User } from '../../model/user.model';
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
-  styleUrls: ['./search.component.css']
+  styleUrls: ['./search.component.css'],
+  animations: [
+    trigger('panelState', [
+      state('start', style({
+        opacity: 0
+      })),
+      state('end', style({
+        opacity: 1
+      })),
+      transition('start => end', animate('500ms 50ms ease-in')),
+    ])
+  ]
 })
 export class SearchComponent implements OnInit {
 
@@ -21,9 +39,12 @@ export class SearchComponent implements OnInit {
   openPanel: boolean = false
   mouseEnter: boolean = false
   searchBox: FormControl = new FormControl();
+  state: string
 
   constructor(private userService: UserService,
-              private router: Router) { }
+              private router: Router) { 
+                this.state = "start"
+              }
 
   ngOnInit() {
     
@@ -67,10 +88,13 @@ export class SearchComponent implements OnInit {
 
   onMouseDown(){
     this.openPanel = true;
+    setTimeout(()=>this.state = "end",10);
   }
 
   onBlur(){
-    if(!this.mouseEnter)
+    if(!this.mouseEnter){
       this.openPanel = false;
+      this.state = "start";
+    }
   }
 }
