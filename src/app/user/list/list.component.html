@@ -6,7 +6,7 @@
 <div class="row detail_section">
 
       <div class="section" *ngFor="let user of users">
-        <user-card [user]="user"></user-card>
+        <user-card [user]="user" (onDeleteUser)="deleteUser($event)"></user-card>
       </div>
 
 

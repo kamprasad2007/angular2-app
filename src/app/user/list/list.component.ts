@@ -24,6 +24,10 @@ export class ListComponent implements OnInit {
       }
     );
 
+    this.getAllUsers();
+  }
+
+  private getAllUsers(){
     this.userService.getAllUsers().subscribe(
       users =>{
         this.users = users;
@@ -36,6 +40,18 @@ export class ListComponent implements OnInit {
 
   searchResult(users: User[]){
     this.users = users
+  }
+
+  deleteUser(id:number){
+    this.userService.deleteUser(id).subscribe(
+      result =>{
+        this.getAllUsers();
+      },
+      error =>{
+        console.log(error);
+      }
+    );
+    
   }
 
 }

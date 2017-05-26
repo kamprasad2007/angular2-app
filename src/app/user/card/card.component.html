@@ -2,8 +2,8 @@
             <div class="card hovercard">
                 <div class="message-box" *ngIf="showDialog">
                     
-                    Do you want to delete this user?
-                    <div class="col-md-10 dialog">
+                    {{message}}
+                    <div class="col-md-10 dialog" *ngIf="allowToDelete">
                       <button type="button" class="btn btn-xs btn-default" (click)="onClickCancel()">
                             <span class="glyphicon glyphicon-remove"></span>
                         </button>
@@ -11,13 +11,19 @@
                             <span class="glyphicon glyphicon-ok"></span>
                         </button>
                     </div>
+
+                    <div class="col-md-10 dialog" *ngIf="!allowToDelete">
+                      <button type="button" class="btn btn-xs btn-default" (click)="onClickCancel()">
+                            <span class="glyphicon glyphicon-ok"></span>
+                        </button>
+                    </div>
                 </div>
 
                 <div class="card-background">
-                    <img class="card-bkimg" alt="" src="/assets/images/{{user.id}}.jpg">
+                    <img class="card-bkimg" alt="" src="/assets/images/{{profilePictureId}}.jpg">
                 </div>
                 <div class="useravatar">
-                    <img alt="" src="/assets/images/{{user.id}}.jpg">
+                    <img alt="" src="/assets/images/{{profilePictureId}}.jpg">
                 </div>
                 <div class="card-info"> <span class="card-title">{{user.firstName}} {{user.lastName}}</span>
 
