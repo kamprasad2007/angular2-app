@@ -1,13 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import {
-  trigger,
-  state,
-  style,
-  animate,
-  transition
-} from '@angular/animations';
+import { trigger, state, style, animate, transition} from '@angular/animations';
 
 import { Observable } from 'rxjs/Observable';
 

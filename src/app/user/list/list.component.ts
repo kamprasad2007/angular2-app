@@ -13,7 +13,6 @@ export class ListComponent implements OnInit {
 
   users: User[]
   enableSearch: boolean = false
-  state: string
 
   constructor(private userService: UserService, private route:ActivatedRoute) { 
   }

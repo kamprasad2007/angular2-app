@@ -15,6 +15,7 @@ Sample application was created using Angular 2.
 * Form module (template driven form approach)
 * Services
 * Rxjs Observable
+* Animation
 
 # How to start
 
