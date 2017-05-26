@@ -108,10 +108,8 @@ app.post('/api/user/update',function(req,res){
 });
 
 app.delete('/api/user/:id',function(req,res){
-    let user = req.body.user.id;
-    User.update({
-            isActive: false
-        },
+    let user = req.params.id;
+    User.destroy(
         {where: { id : req.params.id }}
     ).then(()=>{
         res.send(true);
