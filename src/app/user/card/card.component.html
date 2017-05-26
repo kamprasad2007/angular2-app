@@ -34,10 +34,10 @@
 
             <div class="row action-panel">
                  <div class="col-md-4 col-sm-3 left_panel">
-                      <button type="button" class="btn btn-xs btn-default" (click)="onClickEdit(user.id)">
+                      <button *ngIf="showActionButtons" type="button" class="btn btn-xs btn-default" (click)="onClickEdit(user.id)">
                         <span class="glyphicon glyphicon-pencil"></span>
                     </button>
-                    <button type="button" class="btn btn-xs btn-default" (click)="onClickDelete(user.id)">
+                    <button *ngIf="showActionButtons" type="button" class="btn btn-xs btn-default" (click)="onClickDelete(user.id)">
                         <span class="glyphicon glyphicon-trash"></span>
                     </button>
                 </div>

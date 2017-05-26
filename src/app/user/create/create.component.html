@@ -3,24 +3,52 @@
       <form (ngSubmit)="onSubmit(form)" #form="ngForm">
         <div class="form-group">
           <label for="firstName">First Name:</label>
-          <input type="text" class="form-control" id="firstName" placeholder="First Name"  name="firstName" [(ngModel)]="user.firstName" required>
+          <input type="text" class="form-control" id="firstName" placeholder="First Name"  name="firstName" 
+          [(ngModel)]="user.firstName" required #fName="ngModel">
+
+          <div *ngIf="fName.errors && (fName.dirty || fName.touched)" class="alert alert-danger">
+              <div [hidden]="!fName.errors.required">
+                First Name is required
+              </div>
+          </div>
+
         </div>
         <div class="form-group">
           <label for="lastName">Last Name:</label>
-          <input type="text" class="form-control" id="lastName" placeholder="Last Name"  name="lastName" [(ngModel)]="user.lastName" required>
+          <input type="text" class="form-control" id="lastName" placeholder="Last Name"  name="lastName" 
+          [(ngModel)]="user.lastName" required #lName="ngModel">
+
+          <div *ngIf="lName.errors && (lName.dirty || lName.touched)" class="alert alert-danger">
+              <div [hidden]="!lName.errors.required">
+                Last Name is required
+              </div>
+          </div>
+
         </div>
         <div class="form-group">
           <label for="email">Email:</label>
-          <input type="email" class="form-control" id="email" placeholder="Email" name="email" [(ngModel)]="user.email" required>
+          <input type="email" class="form-control" id="email" placeholder="Email" pattern="[^ @]*@[^ @]*" name="email" 
+          [(ngModel)]="user.email" required #email="ngModel">
+            
+            <div *ngIf="email.errors && (email.dirty || email.touched)" class="alert alert-danger">
+              <div [hidden]="!email.errors.required">
+                Email is required
+              </div>
+               <div [hidden]="!email.errors.pattern">
+                Email Id is invalid
+              </div>
+            </div>
+
         </div>
 
          <div class="form-group">
-          <label for="email">Mobile:</label>
-          <input type="text" class="form-control" id="mobile" placeholder="Mobile No" name="mobile" [(ngModel)]="user.mobile">
+          <label for="mobile">Mobile:</label>
+          <input type="text" class="form-control" id="mobile" placeholder="Mobile No" name="mobile" 
+          [(ngModel)]="user.mobile">
         </div>
 
         <input type="hidden" name="id" [(ngModel)]="user.id">
-        <button type="submit" class="btn btn-primary" [disabled]="!form.valid">Submit</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
 
       </form>
   </div>

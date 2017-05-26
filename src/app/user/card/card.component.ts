@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, HostListener} from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../../model/user.model';
 
@@ -12,10 +12,17 @@ import { User } from '../../model/user.model';
 export class CardComponent implements OnInit {
   @Input() user: User;
   @Output() onDeleteUser = new EventEmitter<number>();
+  @HostListener('mouseenter') onMouseEnter(){
+    this.showActionButtons = true;
+  }
+  @HostListener('mouseleave') onMouseLeave(){
+    this.showActionButtons = false;
+  }
   showDialog: boolean = false
-  message: string = "This record does not allow to delete !"
+  message: string = "This record is not allowed to delete. !"
   allowToDelete: boolean = false
   profilePictureId: number
+  showActionButtons: boolean = false
 
   constructor(private router: Router) { }
 

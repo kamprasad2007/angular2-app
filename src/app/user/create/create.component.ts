@@ -34,6 +34,8 @@ export class CreateComponent implements OnInit {
   }
 
   onSubmit(form: NgForm){
+    if(!form.valid)
+      return;
 
     if(!this.userId){
       this.userService.createUser(form.value).subscribe(
