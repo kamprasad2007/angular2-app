@@ -2,9 +2,9 @@ const express = require('express');
 const app = express();
 const Sequelize = require('sequelize');
 var bodyParser = require('body-parser')
-const config = require('./server/config');
+const config = require('./config');
 const sequelize = new Sequelize(config.db_url);
-const User = require('./server/User.model')
+const User = require('./User.model')
 
 app.use(express.static(__dirname + '/dist'));
 app.use(bodyParser.urlencoded({ extended: false }));
