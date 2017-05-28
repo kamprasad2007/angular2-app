@@ -36,9 +36,8 @@ This sample application was created using Angular 2.
     
 # Recommended Browser
 
-    ```bash
     Google Chrome
-    ```
+    
 
 # Running test
 
