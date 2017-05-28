@@ -2,54 +2,11 @@ const express = require('express');
 const app = express();
 const Sequelize = require('sequelize');
 var bodyParser = require('body-parser')
+const config = require('./server/config');
+const sequelize = new Sequelize(config.db_url);
+const User = require('./server/User.model')
 
-// Run the app by serving the static files
-// in the dist directory
 app.use(express.static(__dirname + '/dist'));
-// Start the app by listening on the default
-// Heroku port
-
-// If an incoming request uses
-// a protocol other than HTTPS,
-// redirect that request to the
-// same url but with HTTPS
-const forceSSL = function() {
-  return function (req, res, next) {
-    if (req.headers['x-forwarded-proto'] !== 'https') {
-      return res.redirect(
-       ['https://', req.get('Host'), req.url].join('')
-      );
-    }
-    next();
-  }
-}
-// Instruct the app
-// to use the forceSSL
-// middleware
-app.use(forceSSL());
-
-const sequelize = new Sequelize('postgres://eojappvvfrwmiz:264ba6a763efb8af48a3c7eed42402a5a2c0ffb0e7e5f2758a1361933a4188e6@ec2-54-227-237-223.compute-1.amazonaws.com:5432/dcjoq8j6died7j');
-const User = sequelize.define('user', {
-  firstName: {
-    type: Sequelize.STRING
-  },
-  lastName: {
-    type: Sequelize.STRING
-  },
-  email: {
-    type: Sequelize.STRING
-  },
-  isActive:{
-      type: Sequelize.BOOLEAN
-  }
-});
-
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
-
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
@@ -84,7 +41,6 @@ app.get('/api/user/search/:text',function(req,res){
             res.send(users);
         });
     }
-  
 });
 
 app.get('/api/user/:id',function(req,res){
@@ -117,51 +73,8 @@ app.delete('/api/user/:id',function(req,res){
 });
 
 
-
-
 sequelize.sync({force: true}).then(()=>{
-    User.bulkCreate([{
-        firstName: 'Leanne',
-        lastName: 'Flinn',
-        email:'Flinn@gmail.com',
-        mobile:''
-    },{
-        firstName: 'Edward',
-        lastName: 'Bryd',
-        email:'Edward@gmail.com',
-        mobile:''
-    },{
-        firstName: 'Curtis',
-        lastName: 'Verde',
-        email:'Verde@gmail.com',
-        mobile:''
-    },
-    {
-        firstName: 'Rikki',
-        lastName: 'Castleman',
-        email:'Castleman@gmail.com',
-        mobile:''
-    },{
-        firstName: 'Yuri',
-        lastName: 'Shelly',
-        email:'Shelly@gmail.com',
-        mobile:''
-    },{
-        firstName: 'Anton',
-        lastName: 'Grieve',
-        email:'Anton@gmail.com',
-        mobile:''
-    },{
-        firstName: 'Jenna',
-        lastName: 'Verde',
-        email:'Verde@gmail.com',
-        mobile:''
-    },{
-        firstName: 'Warren',
-        lastName: 'Karst',
-        email:'Karst@gmail.com',
-        mobile:''
-    }]).then(()=>{
-        app.listen(process.env.PORT || 8080);
+    User.bulkCreate(config.users).then(()=>{
+        app.listen(8080);
     });
 });

@@ -1,4 +1,4 @@
-export class User{
+export class User {
   constructor(
     public firstName: string,
     public lastName: string,
@@ -6,5 +6,5 @@ export class User{
     public mobile?: number,
     public isActive: boolean = true,
     public id?: number
-  ){ }
+  ) { }
 }

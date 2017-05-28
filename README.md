@@ -1,37 +1,47 @@
-# WARNING
-
-This project is no longer maintained. For Angular 2 starter take a look at the [angular2-seed](https://github.com/mgechev/angular2-seed), that this project is based on.
-
 # Introduction
 
-Sample application was created using Angular 2.
+This sample application was created using Angular 2.
+
+# Live Demo
+
+```bsh
+[https://user-management-ui.herokuapp.com](https://user-management-ui.herokuapp.com)
+```
 
 # Features
 
+ ```bash
 * Component
-* Custom Directive
 * Router module
 * Http module
 * Form module (template driven form approach)
 * Services
 * Rxjs Observable
 * Animation
+```
 
 # How to start
 
-```bash
-npm install
-# dev
-ng s
-```
+* First configure DataBase.
+    ```bash
+    server -> config.js
+    ```
+* Install all dependencies
+    ```bash
+    npm install
+    ```
+* run the project 
+    ```bash
+    npm start
+    ```
+    
+# Eecommended Browser
+    ```bash
+    Google Chrome
+    ```
 
 # Running test
 
 ```bash
-# In a single bash window
-npm run test
-
-# Debug - In two bash windows
-npm run karma      # 1st window
-npm run test.dev   # 2nd window
+npm test
 ```

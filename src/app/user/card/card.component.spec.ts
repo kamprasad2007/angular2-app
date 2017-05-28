@@ -1,6 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { Router } from '@angular/router';
 
 import { CardComponent } from './card.component';
+
+export class RouterStub{
+
+}
 
 describe('CardComponent', () => {
   let component: CardComponent;
@@ -9,6 +14,13 @@ describe('CardComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ CardComponent ]
+    })
+     .overrideComponent(CardComponent, {
+      set: {
+        providers: [
+          { provide: Router, useClass: RouterStub },
+        ]
+      }
     })
     .compileComponents();
   }));
