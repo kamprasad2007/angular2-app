@@ -34,7 +34,8 @@ This sample application was created using Angular 2.
     npm start
     ```
     
-# Eecommended Browser
+# Recommended Browser
+
     ```bash
     Google Chrome
     ```
