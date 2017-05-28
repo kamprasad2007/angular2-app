@@ -4,9 +4,8 @@ This sample application was created using Angular 2.
 
 # Live Demo
 
-```bsh
 [https://user-management-ui.herokuapp.com](https://user-management-ui.herokuapp.com)
-```
+
 
 # Features
 
