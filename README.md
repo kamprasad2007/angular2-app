@@ -4,7 +4,7 @@ This sample application was created using Angular 2.
 
 # Live Demo
 
-[https://user-management-ui.herokuapp.com](https://user-management-ui.herokuapp.com)
+[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://user-management-ui.herokuapp.com)
 
 
 # Features
